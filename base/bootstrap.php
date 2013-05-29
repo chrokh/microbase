@@ -9,4 +9,6 @@ require_once "$root/base/autoloader.php";
 
 require_once "$root/config/routes.php";
 
+Router::Route();
+
 ?>

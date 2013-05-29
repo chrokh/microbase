@@ -1,2 +1,2 @@
 <?php require_once 'base/microbase.php'; ?>
-<?php MicroBase::new(); ?>
+<?php MicroBase::Run(); ?>

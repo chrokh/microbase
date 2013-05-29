@@ -1,9 +1,7 @@
 <?php
 class MicroBase{
-  punblic static function Run(){
-  }
-
-  public static function run(){
+  public static function Run(){
+    require_once 'bootstrap.php';
   }
 }
 ?>
