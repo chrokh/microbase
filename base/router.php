@@ -93,7 +93,7 @@ class Router{
   }
 
    private static function buildAbsolutePath($relativePath){
-    return $_SESSION['ROOT'] . '/' . $relativePath;
+    return $_SESSION['APP_PATH'] . '/' . $relativePath;
   }
 
   private static function getRoutingParams(){

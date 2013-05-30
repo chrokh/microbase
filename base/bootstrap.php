@@ -2,12 +2,13 @@
 
 session_start();
 
-$root = $_SESSION['ROOT'] = realpath($_SERVER['DOCUMENT_ROOT']);
+$framework_path = $_SESSION['FRAMEWORK_PATH'] = realpath(dirname(__FILE__));
+$root_path = $_SESSION['APP_PATH'] = getcwd();
 
 // Autoloader
-require_once "$root/base/autoloader.php";
+require_once "$framework_path/autoloader.php";
 
-require_once "$root/config/routes.php";
+require_once "$root_path/config/routes.php";
 
 Router::Route();
 

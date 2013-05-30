@@ -1,9 +1,12 @@
 <?php
 class Autoloader{
   public static function Load($class){
-    self::tryRequire('base', $class);
-    self::tryRequire('models', $class);
-    self::tryRequire('helpers', $class);
+    $appPath = $_SESSION['APP_PATH'];
+    $frameworkPath = $_SESSION['FRAMEWORK_PATH'];
+
+    self::tryRequire($frameworkPath, $class);
+    self::tryRequire("$appPath/models", $class);
+    self::tryRequire("$appPath/helpers", $class);
   }
 
   private static function tryRequire($dir, $class){
@@ -14,8 +17,7 @@ class Autoloader{
   }
 
   private static function checkExistance($file){
-    $absolutePath = $_SESSION['ROOT'] . '/' . $file;
-    return file_exists($absolutePath);
+    return file_exists($file);
   }
 }
 
