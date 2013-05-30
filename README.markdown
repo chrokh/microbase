@@ -36,3 +36,5 @@ Views are expected to live under `/views`. And in the views we can access the va
 And then?
 =========
 Nothing more!
+
+Well, honestly there's some hooks and stuff in there but I guess I'll get onto that some other day.
