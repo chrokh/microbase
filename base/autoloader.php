@@ -6,7 +6,7 @@ class Autoloader{
 
     self::tryRequire($frameworkPath, $class);
     self::tryRequire("$appPath/models", $class);
-    self::tryRequire("$appPath/helpers", $class);
+    self::tryRequire("$appPath/filters", $class);
   }
 
   private static function tryRequire($dir, $class){

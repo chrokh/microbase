@@ -6,13 +6,9 @@ class Router{
     $route = self::findMatchingRoute();
 
     if($route != null){
-      if(self::routeEndpointExists($route)){
-        self::runBeforeFilters($route);
-        self::routeTo($route);
-        self::runAfterFilters($route);
-      }else{
-        self::throwRoutePointingToNonExistantFile($route);
-      }
+      self::runBeforeFilters($route);
+      self::routeTo($route);
+      self::runAfterFilters($route);
     }else{
       self::throwFileNotFound();
     }
@@ -48,14 +44,12 @@ class Router{
     return null;
   }
 
-  private static function routeEndpointExists($route){
-    $file = self::buildAbsolutePath($route['path']); 
-    return self::fileExists($file);
-  }
-
   private static function routeTo($route){
     if(!self::$hasRouted){
-      require_once self::buildAbsolutePath($route['path']);
+      if(function_exists($route['func']))
+        call_user_func($route['func']);
+      else
+        die("Expected route '" . $route['func'] . "' to be defined as a function");
       self::$hasRouted = true;
     }
   }

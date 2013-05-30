@@ -4,13 +4,12 @@ class Routes{
   private static $before_filters = array();
   private static $after_filters = array();
 
-  public static function Add($name, $path, $method = 'GET'){
-    $route = array(
+  public static function Add($name, $func, $method = 'GET'){
+    array_push(self::$routes, array(
       'method' => $method,
-      'path'   => $path,
+      'func'   => $func,
       'name'   => $name
-    );
-    array_push(self::$routes, $route);
+    ));
   }
 
   public static function All(){
