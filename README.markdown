@@ -28,10 +28,12 @@ redirect('/');
 
 Views
 -----
-Views are expected to live under:
-```/views```
+Views are expected to live under `/views`.
+
 And in the views we can access the variables we've set in the route body (controller):
-```getvar('user');```
+```php
+getvar('user');
+```
 
 
 And then?
