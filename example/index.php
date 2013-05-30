@@ -1,2 +1,37 @@
-<?php require_once '../base/microbase.php'; ?>
-<?php MicroBase::Run(); ?>
+<?php
+
+require_once '../base/microbase.php';
+
+/*
+ *
+ * Routes
+ *
+ */
+
+route('/', 'todos');
+  function todos(){
+    setvar('todos', array(
+      'Buy milk', 
+      'Feed cat', 
+      'Eat cereal'));
+
+    render('todos');
+  }
+
+
+route('/new', 'new_todo');
+  function new_todo(){
+    render('new_todo');
+  }
+
+
+
+/*
+ *
+ * Let's go party!
+ *
+ */
+
+microbase();
+
+?>

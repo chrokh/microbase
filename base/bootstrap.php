@@ -8,8 +8,4 @@ $root_path = $_SESSION['APP_PATH'] = getcwd();
 // Autoloader
 require_once "$framework_path/autoloader.php";
 
-require_once "$root_path/config/routes.php";
-
-Router::Route();
-
 ?>

@@ -1,9 +1,15 @@
 <?php
-class MicroBase{
-  public static function Run(){
-    require_once 'bootstrap.php';
-  }
+require_once 'bootstrap.php';
+
+/*
+ *
+ * Framework interface functions
+ *
+ */
+function microbase(){
+  Router::Route();
 }
+
 
 function render($filename){
   Renderer::Render($filename);
