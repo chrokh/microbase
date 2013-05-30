@@ -1,13 +1,11 @@
-PHP MVC Microframework
+Microbase | a micro-framework for funs
+======================================
 
 Originally made to be used in the classroom, but I've not yet actually used it yet :)
-
-Just for funs.
-
 *Very much a work in progress*
 
 Routing
-=======
+-------
 A route is defined like so:
 ```php
 route('/', 'user');
@@ -29,18 +27,21 @@ redirect('/');
 ```
 
 Views
-=====
-Views are expected to live under `/views`. And in the views we can access the variables we previously set using `getvar('user');`.
+-----
+Views are expected to live under:
+```/views```
+And in the views we can access the variables we've set in the route body (controller):
+```getvar('user');```
 
 
 And then?
-=========
+---------
 Nothing more!
 
 Well, honestly there's some hooks and stuff in there but I guess I'll get onto that some other day.
 
 htaccess
-========
+--------
 Since we're working with fancy (eh... nowadays more like regular) urls we need to rock something like this in the .htaccess.
 ```
 Options +FollowSymLinks
