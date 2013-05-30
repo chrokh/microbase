@@ -38,3 +38,17 @@ And then?
 Nothing more!
 
 Well, honestly there's some hooks and stuff in there but I guess I'll get onto that some other day.
+
+htaccess
+========
+Since we're working with fancy (eh... nowadays more like regular) urls we need to rock something like this in the .htaccess.
+```
+Options +FollowSymLinks
+IndexIgnore */*
+# Turn on the RewriteEngine
+RewriteEngine On
+#  Rules
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php
+```
