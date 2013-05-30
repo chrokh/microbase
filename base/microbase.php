@@ -16,7 +16,7 @@ function render($filename){
 }
 
 function redirect($routename){
-  Router::Redirect($route);
+  Router::Redirect($routename);
 }
 
 function route($name, $func, $method = 'GET'){

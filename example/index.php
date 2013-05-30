@@ -25,6 +25,11 @@ route('/new', 'new_todo');
   }
 
 
+route('/about', 'about');
+  function about(){
+    redirect('/');
+  }
+
 
 /*
  *

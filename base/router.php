@@ -3,7 +3,7 @@ class Router{
   private static $hasRouted = false;
 
   public static function Route(){
-    $route = self::findMatchingRoute();
+    $route = self::findRouteFromRequest();
 
     if($route != null){
       self::runBeforeFilters($route);
@@ -15,11 +15,11 @@ class Router{
   }
 
   public static function Redirect($name){
-    foreach(Routes::All() as $r){
-      if($r['name'] == $name && $r['method'] == 'GET'){
-        self::routeTo($r);
-      }
-    }
+    $route = self::findRouteMatching($name);
+    if($name != null)
+      header("Location: $name");
+    else
+      exit("Attempted to redirect to non-existant route: '$name'");
   }
 
   private static function throwRoutePointingToNonExistantFile($route){
@@ -27,21 +27,22 @@ class Router{
   }
 
   private static function throwFileNotFound(){
-    $notFound = array('path' => 'views/404.php');
-    self::routeTo($notFound);
+    Renderer::Render('404');
   }
 
-  private static function findMatchingRoute(){
-    $name   = self::requestedName();
-    $params = self::requestedParams();
-    $method = $_SERVER['REQUEST_METHOD'];
-
+  private static function findRouteMatching($name, $method = 'GET'){
     if($name != null)
       foreach(Routes::All() as $r)
         if($method == $r['method'] && $name == $r['name'])
           return $r;
-
     return null;
+  }
+
+  private static function findRouteFromRequest(){
+    $name   = self::requestedName();
+    $params = self::requestedParams();
+    $method = $_SERVER['REQUEST_METHOD'];
+    return self::findRouteMatching($name, $method);
   }
 
   private static function routeTo($route){
